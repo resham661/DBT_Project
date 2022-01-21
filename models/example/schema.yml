@@ -1,0 +1,37 @@
+
+version: 2
+
+models:
+    - name: my_first_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+
+    - name: my_second_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+              - unique
+              - not_null
+              - relationships:
+                  to: ref('my_first_dbt_model')
+                  field: id
+
+
+    - name: demo_model
+        description: "Total purchase for each customer in snowflake"
+        columns:
+          name: c_custkey
+          tests:
+            - unique
+            - not_null
+
+    - name: cumulative_orders_by_date
+    - name: dates
+    - name: incremental_time
+    - name: dates1
